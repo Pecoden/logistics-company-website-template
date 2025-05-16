@@ -9704,3 +9704,42 @@ p,
   padding: 0;
   list-style-type: none;
 }
+
+    .gallery-img {
+        max-width: 120px;
+        max-height: 120px;
+        margin: auto;
+        display: block;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    /* Place nav arrows on the sides of the carousel */
+    .image-gallery-carousel {
+        position: relative;
+    }
+
+    .image-gallery-carousel .owl-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .image-gallery-carousel .owl-nav button {
+        background: transparent;
+        border: none;
+        font-size: 2rem;
+        color: #007bff;
+        pointer-events: all;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .image-gallery-carousel .owl-nav button span {
+        font-size: 2rem;
+    }

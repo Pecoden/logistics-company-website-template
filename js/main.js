@@ -84,3 +84,24 @@
     
 })(jQuery);
 
+
+        // Initialize the new image gallery carousel
+        $(document).ready(function () {
+            $('.image-gallery-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                navText: [
+                    '<span aria-label="Previous"><i class="fa fa-chevron-left"></i></span>',
+                    '<span aria-label="Next"><i class="fa fa-chevron-right"></i></span>'
+                ],
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                responsive: {
+                    0: { items: 2 },
+                    600: { items: 3 },
+                    1000: { items: 5 }
+                }
+            });
+        });
