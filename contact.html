@@ -109,8 +109,8 @@
                 <div class="col-lg-8 col-md-10">
                     <div class="card shadow-lg border-0 mb-4">
                         <div class="card-header bg-gradient-primary text-white text-center py-4"
-                            style="background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%); border-radius: 1rem 1rem 0 0;">
-                            <h3 class="mb-0 font-weight-bold" style="letter-spacing:2px;font-size:2.1rem;">
+                            style="background:#1F1F2E !important; border-radius: 1rem 1rem 0 0;">
+                            <h3 class="mb-0 font-weight-bold" style="letter-spacing:2px;font-size:2.1rem;color: white;">
                                 <i class="fa fa-envelope mr-2"></i>NEEM CONTACT OP
                             </h3>
                             <h4 class="mt-2 mb-0 font-weight-bold" style="font-size:1.5rem;">reserveer online</h4>
@@ -127,8 +127,18 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12 mb-3">
-                                        <input type="text" class="form-control" placeholder="Verhuizen van">
+                                    <div class="col-sm-6 mb-3">
+                                        <input type="text" class="form-control" placeholder="Achternaam" required>
+                                    </div>
+                                    <!-- يمكن ترك النصف الثاني من الصف فارغًا أو استخدامه لاحقًا -->
+                                    <div class="col-sm-6 mb-3"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 mb-3">
+                                        <input type="text" class="form-control" placeholder="Adres van vertrek">
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <input type="text" class="form-control" placeholder="Postcode">
                                     </div>
                                     <div class="col-sm-6 mb-3">
                                         <select class="form-control" required>
@@ -143,18 +153,6 @@
                                             <option>Ladderlift 8de Verdieping</option>
                                             <option>Ladderlift 9de Verdieping</option>
                                             <option>Ladderlift 10de Verdieping</option>
-                                            <option>Ladderlift 11de Verdieping</option>
-                                            <option>Ladderlift 12de Verdieping</option>
-                                            <option>Ladderlift 13de Verdieping</option>
-                                            <option>Ladderlift 14de Verdieping</option>
-                                            <option>Ladderlift 15de Verdieping</option>
-                                            <option>Ladderlift 16de Verdieping</option>
-                                            <option>Ladderlift 17de Verdieping</option>
-                                            <option>Ladderlift 18de Verdieping</option>
-                                            <option>Ladderlift 19de Verdieping</option>
-                                            <option>Ladderlift 20ste Verdieping</option>
-                                            <option>Ladderlift 21ste Verdieping</option>
-                                            <option>Ladderlift 22ste Verdieping</option>
                                         </select>
                                     </div>
                                 </div>
@@ -243,14 +241,6 @@
                                     </div>
                                     <div class="col-sm-6 mb-3">
                                         <select class="form-control" required>
-                                            <option>Selecteer Personnes verhuis</option>
-                                            <option>2Personnes</option>
-                                            <option>3Personnes</option>
-                                            <option>4Personnes</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
                                             <option>Selecteer uur verhuis</option>
                                             <option>2uur</option>
                                             <option>3uur</option>
@@ -260,28 +250,14 @@
                                     <div class="col-sm-6 mb-3">
                                         <select class="form-control" required>
                                             <option>Selecteer Prijs verhuis</option>
-                                            <option>50€</option>
-                                            <option>53€</option>
-                                            <option>40€</option>
+                                            <option>35€</option>
+                                            <option>20€</option>
                                             <option>70€</option>
-                                            <option>80€</option>
-                                            <option>60€</option>
-                                            <option>150€</option>
-                                            <option>250€</option>
-                                            <option>350€</option>
-                                            <option>440€</option>
-                                            <option>550€</option>
+                                            <option>90€</option>
+                                            <option>125€</option>
                                             <option>350€</option>
                                             <option>450€</option>
-                                            <option>570€</option>
-                                            <option>480€</option>
-                                            <option>580€</option>
-                                            <option>510€</option>
-                                            <option>610€</option>
-                                            <option>530€</option>
-                                            <option>630€</option>
                                             <option>550€</option>
-                                            <option>660€</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3">
@@ -414,8 +390,3 @@
 </body>
 
 </html>
-<style>
-    .bg-gradient-primary {
-        background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%) !important;
-    }
-</style>
