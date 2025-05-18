@@ -10702,6 +10702,7 @@ p,
 }
 
 .navbar-light .navbar-nav .nav-link {
+  font-size: 14px;
   padding: 30px 15px;
   font-weight: 600;
   letter-spacing: 1px;
