@@ -72,20 +72,17 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.facebook.com/share/16MpNrX733/?mibextid=wwXIfr">
+                    <a class="text-white px-2" target="_blank" href="https://www.facebook.com/share/16Hme7MvRo/?mibextid=wwXIfr">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="text-white px-2" href="">
+                    <a class="text-white px-2" target="_blank" href="https://x.com/liederserivce">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a class="text-white px-2" href="">
+                    <a class="text-white px-2" target="_blank" href="https://www.linkedin.com/in/liederserivce-liederserivce-0664aa366/">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="text-white px-2" href="">
+                    <a class="text-white px-2" target="_blank" href="">
                         <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-white pl-2" href="">
-                        <i class="fab fa-youtube"></i>
                     </a>
                 </div>
             </div>
@@ -152,32 +149,37 @@
                             <div class="mt-2" style="font-size:1.1rem;">Alfaladderlift</div>
                         </div>
                         <div class="card-body p-4 bg-white">
-                            <form>
+                            <form id="contactForm">
                                 <div class="row">
                                     <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" placeholder="uw naam" required>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="uw naam"
+                                            required>
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <input type="email" class="form-control" placeholder="E-mailadres" required>
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            placeholder="E-mailadres" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" placeholder="Achternaam" required>
+                                        <input type="text" class="form-control" name="lastname" id="lastname"
+                                            placeholder="Achternaam" required>
                                     </div>
                                     <!-- يمكن ترك النصف الثاني من الصف فارغًا أو استخدامه لاحقًا -->
                                     <div class="col-sm-6 mb-3"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" placeholder="Adres van vertrek">
+                                        <input type="text" class="form-control" name="from_address" id="from_address"
+                                            placeholder="Adres van vertrek">
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" placeholder="Postcode">
+                                        <input type="text" class="form-control" name="postcode" id="postcode"
+                                            placeholder="Postcode">
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
-                                            <option>Selecteer Van Verdieping</option>
+                                        <select class="form-control" name="from_floor" id="from_floor" required>
+                                            <option value="">Selecteer Van Verdieping</option>
                                             <option>Ladderlift 1ste Verdieping</option>
                                             <option>Ladderlift 2de Verdieping</option>
                                             <option>Ladderlift 3de Verdieping</option>
@@ -193,11 +195,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 mb-3">
-                                        <input type="text" class="form-control" placeholder="Verhuizen Naar">
+                                        <input type="text" class="form-control" name="to_address" id="to_address"
+                                            placeholder="Verhuizen Naar">
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
-                                            <option>Selecteer Naar Verdieping</option>
+                                        <select class="form-control" name="to_floor" id="to_floor" required>
+                                            <option value="">Selecteer Naar Verdieping</option>
                                             <option>Ladderlift 1ste Verdieping</option>
                                             <option>Ladderlift 2de Verdieping</option>
                                             <option>Ladderlift 3de Verdieping</option>
@@ -225,8 +228,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
-                                            <option>Selecteer tijd</option>
+                                        <select class="form-control" name="time" id="time" required>
+                                            <option value="">Selecteer tijd</option>
                                             <option>7:00</option>
                                             <option>7:30</option>
                                             <option>8:00</option>
@@ -253,19 +256,19 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <input type="date" class="form-control" required>
+                                        <input type="date" class="form-control" name="date" id="date" required>
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
-                                            <option>type van Lift</option>
+                                        <select class="form-control" name="lift_type" id="lift_type" required>
+                                            <option value="">type van Lift</option>
                                             <option>Ladderlift</option>
                                             <option>Treklift</option>
                                             <option>Gedalift</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
-                                            <option>Selecteer verdieping verhuis</option>
+                                        <select class="form-control" name="move_floor" id="move_floor" required>
+                                            <option value="">Selecteer verdieping verhuis</option>
                                             <option>1ste tot 3de</option>
                                             <option>4de tot 9de</option>
                                             <option>10de tot 12de</option>
@@ -275,16 +278,16 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
-                                            <option>Selecteer uur verhuis</option>
+                                        <select class="form-control" name="move_hour" id="move_hour" required>
+                                            <option value="">Selecteer uur verhuis</option>
                                             <option>2uur</option>
                                             <option>3uur</option>
                                             <option>+1/2uur</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <select class="form-control" required>
-                                            <option>Selecteer Prijs verhuis</option>
+                                        <select class="form-control" name="move_price" id="move_price" required>
+                                            <option value="">Selecteer Prijs verhuis</option>
                                             <option>35€</option>
                                             <option>20€</option>
                                             <option>70€</option>
@@ -296,19 +299,22 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" placeholder="telefoonnummer">
+                                        <input type="text" class="form-control" name="phone" id="phone"
+                                            placeholder="telefoonnummer">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 mb-3">
-                                        <textarea class="form-control" rows="5" placeholder="Bericht"></textarea>
+                                        <textarea class="form-control" name="message" id="message" rows="5"
+                                            placeholder="Bericht"></textarea>
                                     </div>
                                     <div class="col-sm-12 text-center">
-                                        <button type="submit"
+                                        <button type="submit" id="sendMessageButton"
                                             class="btn btn-primary px-5 py-2 font-weight-bold">versturen</button>
                                     </div>
                                 </div>
                             </form>
+                            <div id="success"></div>
                         </div>
                     </div>
                     <!-- الخريطة تحت الفورم بعرض كامل -->
@@ -341,11 +347,11 @@
                         <p><i class="fa fa-university mr-2"></i>BTW : BE07 2750 3463</p>
                         <p><i class="fa fa-envelope mr-2"></i>info@liederserivce.be</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social mr-2" href="https://x.com/liederserivce"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-outline-light btn-social mr-2"
-                                href="https://www.facebook.com/share/16MpNrX733/?mibextid=wwXIfr"><i
+                                href="https://www.facebook.com/share/16Hme7MvRo/?mibextid=wwXIfr"><i
                                     class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i
+                            <a class="btn btn-outline-light btn-social mr-2" href="https://www.linkedin.com/in/liederserivce-liederserivce-0664aa366/"><i
                                     class="fab fa-linkedin-in"></i></a>
                             <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
                         </div>
