@@ -10727,6 +10727,7 @@ p,
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .btn-play {
