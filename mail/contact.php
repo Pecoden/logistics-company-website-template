@@ -10,11 +10,25 @@ if(
 $name = strip_tags(htmlspecialchars($_POST['name']));
 $email = strip_tags(htmlspecialchars($_POST['email']));
 $lastname = isset($_POST['lastname']) ? strip_tags(htmlspecialchars($_POST['lastname'])) : '';
-$from_address = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
-$postcode = isset($_POST['postcode']) ? strip_tags(htmlspecialchars($_POST['postcode'])) : '';
-$postcode1 = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
+$location_type = isset($_POST['location_type']) ? $_POST['location_type'] : '';
+
+// Default values
+$from_address = '';
+$postcode1 = '';
+$to_address = '';
+$postcode = '';
+
+if ($location_type === 'one') {
+    $from_address = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
+    $postcode1 = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
+} elseif ($location_type === 'two') {
+    $from_address = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
+    $postcode1 = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
+    $to_address = isset($_POST['to_address']) ? strip_tags(htmlspecialchars($_POST['to_address'])) : '';
+    $postcode = isset($_POST['postcode']) ? strip_tags(htmlspecialchars($_POST['postcode'])) : '';
+}
+
 $from_floor = isset($_POST['from_floor']) ? strip_tags(htmlspecialchars($_POST['from_floor'])) : '';
-$to_address = isset($_POST['to_address']) ? strip_tags(htmlspecialchars($_POST['to_address'])) : '';
 $to_floor = isset($_POST['to_floor']) ? strip_tags(htmlspecialchars($_POST['to_floor'])) : '';
 $time = isset($_POST['time']) ? strip_tags(htmlspecialchars($_POST['time'])) : '';
 $date = isset($_POST['date']) ? strip_tags(htmlspecialchars($_POST['date'])) : '';
@@ -30,11 +44,16 @@ $body .= "Naam: $name\n";
 $body .= "Achternaam: $lastname\n";
 $body .= "E-mail: $email\n";
 $body .= "Telefoonnummer: $phone\n";
-$body .= "Adres van vertrek: $from_address\n";
-$body .= "Postcode Adres: $postcode1\n";
-$body .= "Postcode: $postcode\n";
+if ($location_type === 'one') {
+    $body .= "Adres: $from_address\n";
+    $body .= "Postcode: $postcode1\n";
+} elseif ($location_type === 'two') {
+    $body .= "Adres van vertrek: $from_address\n";
+    $body .= "Postcode vertrek: $postcode1\n";
+    $body .= "Verhuizen Naar: $to_address\n";
+    $body .= "Postcode bestemming: $postcode\n";
+}
 $body .= "Van Verdieping: $from_floor\n";
-$body .= "Verhuizen Naar: $to_address\n";
 $body .= "Naar Verdieping: $to_floor\n";
 $body .= "Datum: $date\n";
 $body .= "Tijd: $time\n";

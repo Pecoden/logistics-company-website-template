@@ -167,53 +167,46 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" name="from_address" id="from_address"
-                                            placeholder="Adres van vertrek">
-                                    </div>
-                                    <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" name="postcode1" id="postcode1"
-                                            placeholder="Postcode">
-                                    </div>
                                     <div class="col-sm-12 mb-3">
-                                        <select class="form-control" name="from_floor" id="from_floor" required>
-                                            <option value="">Selecteer Van Verdieping</option>
-                                            <option>Ladderlift 1ste Verdieping</option>
-                                            <option>Ladderlift 2de Verdieping</option>
-                                            <option>Ladderlift 3de Verdieping</option>
-                                            <option>Ladderlift 4de Verdieping</option>
-                                            <option>Ladderlift 5de Verdieping</option>
-                                            <option>Ladderlift 6de Verdieping</option>
-                                            <option>Ladderlift 7de Verdieping</option>
-                                            <option>Ladderlift 8de Verdieping</option>
-                                            <option>Ladderlift 9de Verdieping</option>
-                                            <option>Ladderlift 10de Verdieping</option>
+                                        <select class="form-control" name="location_type" id="location_type" required>
+                                            <option value="">Kies aantal locaties</option>
+                                            <option value="one">Eén locatie</option>
+                                            <option value="two">Twee locaties</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-12 mb-3">
-                                        <input type="text" class="form-control" name="to_address" id="to_address"
-                                            placeholder="Verhuizen Naar">
+                                <div id="one-location-fields">
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3">
+                                            <input type="text" class="form-control" name="from_address" id="from_address"
+                                                placeholder="Adres" >
+                                        </div>
+                                        <div class="col-sm-6 mb-3">
+                                            <input type="text" class="form-control" name="postcode1" id="postcode1"
+                                                placeholder="Postcode" >
+                                        </div>
                                     </div>
-                                     <div class="col-sm-6 mb-3">
-                                        <input type="text" class="form-control" name="postcode" id="postcode"
-                                            placeholder="Postcode">
+                                </div>
+                                <div id="two-location-fields" style="display:none;">
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3">
+                                            <input type="text" class="form-control" name="from_address" id="from_address_two"
+                                                placeholder="Adres van vertrek" >
+                                        </div>
+                                        <div class="col-sm-6 mb-3">
+                                            <input type="text" class="form-control" name="postcode1" id="postcode1_two"
+                                                placeholder="Postcode vertrek" >
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6 mb-3">
-                                        <select class="form-control" name="to_floor" id="to_floor" required>
-                                            <option value="">Selecteer Naar Verdieping</option>
-                                            <option>Ladderlift 1ste Verdieping</option>
-                                            <option>Ladderlift 2de Verdieping</option>
-                                            <option>Ladderlift 3de Verdieping</option>
-                                            <option>Ladderlift 4de Verdieping</option>
-                                            <option>Ladderlift 5de Verdieping</option>
-                                            <option>Ladderlift 6de Verdieping</option>
-                                            <option>Ladderlift 7de Verdieping</option>
-                                            <option>Ladderlift 8de Verdieping</option>
-                                            <option>Ladderlift 9de Verdieping</option>
-                                            <option>Ladderlift 10de Verdieping</option>
-                                        </select>
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3">
+                                            <input type="text" class="form-control" name="to_address" id="to_address"
+                                                placeholder="Verhuizen Naar" >
+                                        </div>
+                                        <div class="col-sm-6 mb-3">
+                                            <input type="text" class="form-control" name="postcode" id="postcode"
+                                                placeholder="Postcode bestemming" >
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -401,6 +394,33 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var locationType = document.getElementById('location_type');
+        var oneFields = document.getElementById('one-location-fields');
+        var twoFields = document.getElementById('two-location-fields');
+        locationType.addEventListener('change', function() {
+            if (this.value === 'one') {
+                oneFields.style.display = '';
+                twoFields.style.display = 'none';
+                // Clear two-location fields
+                document.getElementById('from_address_two').value = '';
+                document.getElementById('postcode1_two').value = '';
+                document.getElementById('to_address').value = '';
+                document.getElementById('postcode').value = '';
+            } else if (this.value === 'two') {
+                oneFields.style.display = 'none';
+                twoFields.style.display = '';
+                // Clear one-location fields
+                document.getElementById('from_address').value = '';
+                document.getElementById('postcode1').value = '';
+            } else {
+                oneFields.style.display = 'none';
+                twoFields.style.display = 'none';
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>
