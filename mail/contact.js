@@ -6,16 +6,19 @@ $(function () {
         },
         submitSuccess: function ($form, event) {
             event.preventDefault();
+            var locationType = $("#location_type").val();
             var formData = {
                 name: $("input[name='name']").val(),
                 email: $("input[name='email']").val(),
                 lastname: $("input[name='lastname']").val(),
-                from_address: $("input[name='from_address']").val(),
-                postcode: $("input[name='postcode']").val(),
-                postcode1: $("input[name='postcode1']").val(),
-                from_floor: $("select[name='from_floor']").val(),
-                to_address: $("input[name='to_address']").val(),
-                to_floor: $("select[name='to_floor']").val(),
+                // For two locations, use the *_two fields for departure
+                from_address: locationType === "two" ? $("#from_address_two").val() : $("#from_address").val(),
+                postcode1: locationType === "two" ? $("#postcode1_two").val() : $("#postcode1").val(),
+                from_floor: locationType === "two" ? $("#from_floor_two").val() : $("#from_floor").val(),
+                // Always send to_address, postcode, to_floor (may be empty for one location)
+                to_address: $("#to_address").val(),
+                postcode: $("#postcode").val(),
+                to_floor: $("#to_floor").val(),
                 time: $("select[name='time']").val(),
                 date: $("input[name='date']").val(),
                 move_price: $("select[name='move_price']").val(),

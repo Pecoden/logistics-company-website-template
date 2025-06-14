@@ -15,26 +15,49 @@ $location_type = isset($_POST['location_type']) ? $_POST['location_type'] : '';
 // Default values
 $from_address = '';
 $postcode1 = '';
+$from_floor = '';
 $to_address = '';
 $postcode = '';
+$to_floor = '';
 
-if ($location_type === 'one') {
-    $from_address = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
-    $postcode1 = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
-} elseif ($location_type === 'two') {
-    $from_address = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
-    $postcode1 = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
+// New variables for two-location fields
+$from_address_two = '';
+$postcode1_two = '';
+$from_floor_two = '';
+
+$time = '';
+$date = '';
+$move_price = '';
+$phone = '';
+$message = '';
+
+if ($location_type === 'two') {
+    // For two locations, get both sets of fields
+    $from_address_two = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
+    $postcode1_two = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
+    $from_floor_two = isset($_POST['from_floor']) ? strip_tags(htmlspecialchars($_POST['from_floor'])) : '';
     $to_address = isset($_POST['to_address']) ? strip_tags(htmlspecialchars($_POST['to_address'])) : '';
     $postcode = isset($_POST['postcode']) ? strip_tags(htmlspecialchars($_POST['postcode'])) : '';
+    $to_floor = isset($_POST['to_floor']) ? strip_tags(htmlspecialchars($_POST['to_floor'])) : '';
+    // For two locations, also include the "from" fields as departure
+    $from_address = $from_address_two;
+    $postcode1 = $postcode1_two;
+    $from_floor = $from_floor_two;
+} else {
+    $from_address = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
+    $postcode1 = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
+    $from_floor = isset($_POST['from_floor']) ? strip_tags(htmlspecialchars($_POST['from_floor'])) : '';
+    $to_address = '';
+    $postcode = '';
+    $to_floor = '';
 }
-
-$from_floor = isset($_POST['from_floor']) ? strip_tags(htmlspecialchars($_POST['from_floor'])) : '';
-$to_floor = isset($_POST['to_floor']) ? strip_tags(htmlspecialchars($_POST['to_floor'])) : '';
 $time = isset($_POST['time']) ? strip_tags(htmlspecialchars($_POST['time'])) : '';
 $date = isset($_POST['date']) ? strip_tags(htmlspecialchars($_POST['date'])) : '';
 $move_price = isset($_POST['move_price']) ? strip_tags(htmlspecialchars($_POST['move_price'])) : '';
 $phone = isset($_POST['phone']) ? strip_tags(htmlspecialchars($_POST['phone'])) : '';
 $message = isset($_POST['message']) ? strip_tags(htmlspecialchars($_POST['message'])) : '';
+
+// لا حاجة لتعديل إضافي هنا إذا تم إرسال القيم الصحيحة من JS
 
 $to = "info@liederserivce.be"; // Change this email to your //
 $subject = "Nieuw contactformulier van $name $lastname";
@@ -44,20 +67,45 @@ $body .= "Naam: $name\n";
 $body .= "Achternaam: $lastname\n";
 $body .= "E-mail: $email\n";
 $body .= "Telefoonnummer: $phone\n";
-if ($location_type === 'one') {
-    $body .= "Adres: $from_address\n";
-    $body .= "Postcode: $postcode1\n";
-} elseif ($location_type === 'two') {
-    $body .= "Adres van vertrek: $from_address\n";
-    $body .= "Postcode vertrek: $postcode1\n";
-    $body .= "Verhuizen Naar: $to_address\n";
-    $body .= "Postcode bestemming: $postcode\n";
+if ($location_type === 'two') {
+    if (!empty($from_address)) {
+        $body .= "Adres van vertrek: $from_address\n";
+    }
+    if (!empty($postcode1)) {
+        $body .= "Postcode vertrek: $postcode1\n";
+    }
+    if (!empty($from_floor)) {
+        $body .= "Van Verdieping: $from_floor\n";
+    }
+    if (!empty($to_address)) {
+        $body .= "Verhuizen Naar: $to_address\n";
+    }
+    if (!empty($postcode)) {
+        $body .= "Postcode bestemming: $postcode\n";
+    }
+    if (!empty($to_floor)) {
+        $body .= "Naar Verdieping: $to_floor\n";
+    }
+} else {
+    if (!empty($from_address)) {
+        $body .= "Adres: $from_address\n";
+    }
+    if (!empty($postcode1)) {
+        $body .= "Postcode: $postcode1\n";
+    }
+    if (!empty($from_floor)) {
+        $body .= "Verdieping: $from_floor\n";
+    }
 }
-$body .= "Van Verdieping: $from_floor\n";
-$body .= "Naar Verdieping: $to_floor\n";
-$body .= "Datum: $date\n";
-$body .= "Tijd: $time\n";
-$body .= "Prijs verhuis: $move_price\n";
+if (!empty($date)) {
+    $body .= "Datum: $date\n";
+}
+if (!empty($time)) {
+    $body .= "Tijd: $time\n";
+}
+if (!empty($move_price)) {
+    $body .= "Prijs verhuis: $move_price\n";
+}
 $body .= "Bericht:\n$message\n";
 
 $headers = "From: $email\r\n";
