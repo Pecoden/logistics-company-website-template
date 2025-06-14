@@ -36,6 +36,7 @@ if ($location_type === 'two') {
     $from_address_two = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
     $postcode1_two = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
     $from_floor_two = isset($_POST['from_floor']) ? strip_tags(htmlspecialchars($_POST['from_floor'])) : '';
+    // Always get destination fields from POST
     $to_address = isset($_POST['to_address']) ? strip_tags(htmlspecialchars($_POST['to_address'])) : '';
     $postcode = isset($_POST['postcode']) ? strip_tags(htmlspecialchars($_POST['postcode'])) : '';
     $to_floor = isset($_POST['to_floor']) ? strip_tags(htmlspecialchars($_POST['to_floor'])) : '';
@@ -47,9 +48,10 @@ if ($location_type === 'two') {
     $from_address = isset($_POST['from_address']) ? strip_tags(htmlspecialchars($_POST['from_address'])) : '';
     $postcode1 = isset($_POST['postcode1']) ? strip_tags(htmlspecialchars($_POST['postcode1'])) : '';
     $from_floor = isset($_POST['from_floor']) ? strip_tags(htmlspecialchars($_POST['from_floor'])) : '';
-    $to_address = '';
-    $postcode = '';
-    $to_floor = '';
+    // Always get destination fields from POST (may be empty)
+    $to_address = isset($_POST['to_address']) ? strip_tags(htmlspecialchars($_POST['to_address'])) : '';
+    $postcode = isset($_POST['postcode']) ? strip_tags(htmlspecialchars($_POST['postcode'])) : '';
+    $to_floor = isset($_POST['to_floor']) ? strip_tags(htmlspecialchars($_POST['to_floor'])) : '';
 }
 $time = isset($_POST['time']) ? strip_tags(htmlspecialchars($_POST['time'])) : '';
 $date = isset($_POST['date']) ? strip_tags(htmlspecialchars($_POST['date'])) : '';
@@ -67,35 +69,17 @@ $body .= "Naam: $name\n";
 $body .= "Achternaam: $lastname\n";
 $body .= "E-mail: $email\n";
 $body .= "Telefoonnummer: $phone\n";
-if ($location_type === 'two') {
-    if (!empty($from_address)) {
-        $body .= "Adres van vertrek: $from_address\n";
-    }
-    if (!empty($postcode1)) {
-        $body .= "Postcode vertrek: $postcode1\n";
-    }
-    if (!empty($from_floor)) {
-        $body .= "Van Verdieping: $from_floor\n";
-    }
-    if (!empty($to_address)) {
-        $body .= "Verhuizen Naar: $to_address\n";
-    }
-    if (!empty($postcode)) {
-        $body .= "Postcode bestemming: $postcode\n";
-    }
-    if (!empty($to_floor)) {
-        $body .= "Naar Verdieping: $to_floor\n";
-    }
-} else {
-    if (!empty($from_address)) {
-        $body .= "Adres: $from_address\n";
-    }
-    if (!empty($postcode1)) {
-        $body .= "Postcode: $postcode1\n";
-    }
-    if (!empty($from_floor)) {
-        $body .= "Verdieping: $from_floor\n";
-    }
+$body .= "Adres van vertrek: $from_address\n";
+$body .= "Postcode vertrek: $postcode1\n";
+$body .= "Van Verdieping: $from_floor\n";
+if (!empty($to_address)) {
+    $body .= "Verhuizen Naar: $to_address\n";
+}
+if (!empty($postcode)) {
+    $body .= "Postcode: $postcode\n";
+}
+if (!empty($to_floor)) {
+    $body .= "Naar Verdieping: $to_floor\n";
 }
 if (!empty($date)) {
     $body .= "Datum: $date\n";
